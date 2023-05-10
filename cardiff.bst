@@ -7,6 +7,7 @@
 %% merlin.mbs  (with options: `ay,nat,nm-rev,ed-rev,jnrlst,keyxyr,dt-beg,yr-per,yrp-per,note-yr,volp-com,jwdpg,num-xser,jnm-x,add-pub,pre-pub,isbn,issn,doi,in-col,pp,ed,xedn,and-xcom,etal-xc,etal-it,url,url-blk,nfss,')
 %% ----------------------------------------
 %% *** Cardiff University Harvard Style ***
+%% This file has been forked from @pbexe on GitHub and updated for 2023
 %% 
 %% Copyright 1994-2008 Patrick W Daly
  % ===============================================================
@@ -540,7 +541,7 @@ FUNCTION {editor.key.full}
     }
     { editor format.full.names }
   if$
-}
+}g
 
 FUNCTION {make.full.names}
 { type$ "book" =
@@ -1096,9 +1097,9 @@ FUNCTION {misc}
 { output.bibitem
   format.authors output
   author format.key output
-  format.date "year" output.check
   date.block
   format.title output
+  format.date "year" output.check
   emphasize
   "[Online]" output
   new.block
@@ -1220,9 +1221,9 @@ FUNCTION {format.lab.names}
 
 FUNCTION {author.key.label}
 { author empty$
-    { key empty$
+    { title empty$
         { cite$ #1 #3 substring$ }
-        'key
+        'title
       if$
     }
     { author format.lab.names }
